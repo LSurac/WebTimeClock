@@ -1,8 +1,8 @@
 ﻿using System.Net.Mail;
 using System.Net;
-using ApplicationNotification.Configurations;
+using WebTimeClock.ApplicationNotification.Configurations;
 
-namespace ApplicationNotification.Services
+namespace WebTimeClock.ApplicationNotification.Services
 {
     public class EmailService(
         SmtpSettings smtpSettings,

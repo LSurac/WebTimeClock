@@ -1,10 +1,10 @@
-﻿using ApplicationNotification.Configurations;
-using ApplicationNotification.Services;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using WebTimeClock.ApplicationNotification.Configurations;
+using WebTimeClock.ApplicationNotification.Services;
 
-namespace ApplicationNotification
+namespace WebTimeClock.ApplicationNotification
 {
     public static class DependencyInjection
     {

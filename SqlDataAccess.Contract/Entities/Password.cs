@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace SqlDataAccess.Contract.Entities
+namespace WebTimeClock.SqlDataAccess.Contract.Entities
 {
     [Table("password")]
     public class Password

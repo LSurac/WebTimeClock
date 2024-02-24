@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SqlDataAccess.Contract.Configurations;
-using SqlDataAccess.Services;
+using WebTimeClock.SqlDataAccess.Contract.Configurations;
+using WebTimeClock.SqlDataAccess.Services;
 
-namespace SqlDataAccess
+namespace WebTimeClock.SqlDataAccess
 {
     public static class DependencyInjection
     {

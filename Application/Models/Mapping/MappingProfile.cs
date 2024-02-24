@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using AutoMapper;
 
-namespace Application.Models.Mapping
+namespace WebTimeClock.Application.Models.Mapping
 {
     public class MappingProfile : Profile
     {

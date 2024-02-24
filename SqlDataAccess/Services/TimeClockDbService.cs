@@ -1,9 +1,9 @@
 ﻿using System.Data;
-using SqlDataAccess.Contract.Entities;
-using SqlDataAccess.Contract.Services;
 using System.Data.SqlClient;
+using WebTimeClock.SqlDataAccess.Contract.Entities;
+using WebTimeClock.SqlDataAccess.Contract.Services;
 
-namespace SqlDataAccess.Services
+namespace WebTimeClock.SqlDataAccess.Services
 {
     public class TimeClockDbService(SqlDataAccessor sqlDataAccessor) : ITimeClockDbService
     {

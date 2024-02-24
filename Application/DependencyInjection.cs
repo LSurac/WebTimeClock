@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Application
+namespace WebTimeClock.Application
 {
     public static class DependencyInjection
     {

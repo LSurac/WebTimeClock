@@ -1,9 +1,9 @@
-﻿using Application.Models.Dto;
-using ApplicationData.Contract.Services;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
+using WebTimeClock.Application.Models.Dto;
+using WebTimeClock.ApplicationData.Contract.Services;
 
-namespace Application.TimeClock.Queries.TimeClockListGet
+namespace WebTimeClock.Application.TimeClock.Queries.TimeClockListGet
 {
     public class TimeClockListGetQueryHandler(IEmployeeDataService employeeDataService,
         ITimeClockDataService timeClockDataService,

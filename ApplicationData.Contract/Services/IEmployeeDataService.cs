@@ -1,6 +1,6 @@
-﻿using ApplicationData.Contract.Models.DataModels;
+﻿using WebTimeClock.ApplicationData.Contract.Models.DataModels;
 
-namespace ApplicationData.Contract.Services
+namespace WebTimeClock.ApplicationData.Contract.Services
 {
     public interface IEmployeeDataService
     {

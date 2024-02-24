@@ -1,4 +1,4 @@
-﻿namespace ApplicationData.Contract.Models.DataModels
+﻿namespace WebTimeClock.ApplicationData.Contract.Models.DataModels
 {
     public class PasswordDataModel
     {

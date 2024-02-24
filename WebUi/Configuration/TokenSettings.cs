@@ -1,4 +1,4 @@
-﻿namespace WebTimeClock.Configuration
+﻿namespace WebTimeClock.WebUi.Configuration
 {
     public class TokenSettings
     {

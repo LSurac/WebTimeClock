@@ -1,7 +1,7 @@
-﻿using Application.Models.Dto;
-using MediatR;
+﻿using MediatR;
+using WebTimeClock.Application.Models.Dto;
 
-namespace Application.TimeClock.Commands.TimeClockSet
+namespace WebTimeClock.Application.TimeClock.Commands.TimeClockSet
 {
     public class TimeClockSetCommand : IRequest<TimeClockSetCommandResult>
     {

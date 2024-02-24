@@ -1,10 +1,10 @@
-﻿using Application.Models.Dto;
-using ApplicationData.Contract.Models.DataModels;
-using ApplicationData.Contract.Services;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
+using WebTimeClock.Application.Models.Dto;
+using WebTimeClock.ApplicationData.Contract.Models.DataModels;
+using WebTimeClock.ApplicationData.Contract.Services;
 
-namespace Application.Employee.Commands.EmployeeValidateLogin
+namespace WebTimeClock.Application.Employee.Commands.EmployeeValidateLogin
 {
     public class EmployeeValidateLoginCommandHandler(IMapper mapper, 
         IEmployeeDataService employeeDataService, 

@@ -1,9 +1,9 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using SqlDataAccess.Contract.Entities;
-using SqlDataAccess.Contract.Services;
+using WebTimeClock.SqlDataAccess.Contract.Entities;
+using WebTimeClock.SqlDataAccess.Contract.Services;
 
-namespace SqlDataAccess.Services
+namespace WebTimeClock.SqlDataAccess.Services
 {
     public class PasswordDbService(SqlDataAccessor sqlDataAccessor) : IPasswordDbService
     {

@@ -1,10 +1,10 @@
 ﻿using System.Globalization;
-using ApplicationNotification.Configurations;
-using ApplicationNotification.Notification;
-using ApplicationNotification.Services;
 using MediatR;
+using WebTimeClock.ApplicationNotification.Configurations;
+using WebTimeClock.ApplicationNotification.Notification;
+using WebTimeClock.ApplicationNotification.Services;
 
-namespace ApplicationNotification.NotificationHandler
+namespace WebTimeClock.ApplicationNotification.NotificationHandler
 {
     public class ClockOutNotificationHandler(
         NotificationSettings notificationSettings, 

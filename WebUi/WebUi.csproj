@@ -27,7 +27,7 @@
 
 	<PropertyGroup>
 		<RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-		<RootNamespace>WebTimeClock</RootNamespace>
+		<RootNamespace>WebTimeClock.WebUi</RootNamespace>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<Company>Leonard Surac</Company>
 	</PropertyGroup>

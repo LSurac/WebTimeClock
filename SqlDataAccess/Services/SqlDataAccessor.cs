@@ -1,10 +1,10 @@
-﻿using SqlDataAccess.Contract.Configurations;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using System.Reflection;
+using WebTimeClock.SqlDataAccess.Contract.Configurations;
 
-namespace SqlDataAccess.Services
+namespace WebTimeClock.SqlDataAccess.Services
 {
     public class SqlDataAccessor(MsSqlDataSettings msSqlDataSettings)
     {

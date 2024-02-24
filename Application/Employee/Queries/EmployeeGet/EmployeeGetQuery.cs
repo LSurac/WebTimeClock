@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Employee.Queries.EmployeeGet
+namespace WebTimeClock.Application.Employee.Queries.EmployeeGet
 {
     public class EmployeeGetQuery : IRequest<EmployeeGetQueryResult>
     {

@@ -1,10 +1,9 @@
-﻿using Application.TimeClock.Commands.TimeClockSet;
-using Application.TimeClock.Queries.TimeClockLastGet;
-using Application.TimeClock.Queries.TimeClockListGet;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebTimeClock.Application.TimeClock.Commands.TimeClockSet;
+using WebTimeClock.Application.TimeClock.Queries.TimeClockLastGet;
+using WebTimeClock.Application.TimeClock.Queries.TimeClockListGet;
 
-namespace WebTimeClock.Controllers
+namespace WebTimeClock.WebUi.Controllers
 {
     //[Authorize]
     [ApiController]

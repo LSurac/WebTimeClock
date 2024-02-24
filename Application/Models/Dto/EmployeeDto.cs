@@ -1,9 +1,9 @@
-﻿using Application.Models.Mapping;
-using ApplicationData.Contract.Models.DataModels;
-using ApplicationData.Contract.Models.Enums;
-using AutoMapper;
+﻿using AutoMapper;
+using WebTimeClock.Application.Models.Mapping;
+using WebTimeClock.ApplicationData.Contract.Models.DataModels;
+using WebTimeClock.ApplicationData.Contract.Models.Enums;
 
-namespace Application.Models.Dto
+namespace WebTimeClock.Application.Models.Dto
 {
     public class EmployeeDto : IMapFrom<EmployeeDataModel>
     {

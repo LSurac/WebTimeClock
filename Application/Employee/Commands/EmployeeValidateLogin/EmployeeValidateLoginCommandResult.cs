@@ -1,6 +1,6 @@
-﻿using Application.Models.Dto;
+﻿using WebTimeClock.Application.Models.Dto;
 
-namespace Application.Employee.Commands.EmployeeValidateLogin
+namespace WebTimeClock.Application.Employee.Commands.EmployeeValidateLogin
 {
     public class EmployeeValidateLoginCommandResult
     {

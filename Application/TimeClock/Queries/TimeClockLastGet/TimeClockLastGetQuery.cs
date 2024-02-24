@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.TimeClock.Queries.TimeClockLastGet
+namespace WebTimeClock.Application.TimeClock.Queries.TimeClockLastGet
 {
     public class TimeClockLastGetQuery : IRequest<TimeClockLastGetQueryResult>
     {

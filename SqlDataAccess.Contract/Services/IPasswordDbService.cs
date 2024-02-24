@@ -1,6 +1,6 @@
-﻿using SqlDataAccess.Contract.Entities;
+﻿using WebTimeClock.SqlDataAccess.Contract.Entities;
 
-namespace SqlDataAccess.Contract.Services
+namespace WebTimeClock.SqlDataAccess.Contract.Services
 {
     public interface IPasswordDbService
     {

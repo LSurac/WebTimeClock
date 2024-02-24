@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Employee.Commands.EmployeeValidateLogin
+namespace WebTimeClock.Application.Employee.Commands.EmployeeValidateLogin
 {
     public class EmployeeValidateLoginCommand : IRequest<EmployeeValidateLoginCommandResult>
     {

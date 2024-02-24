@@ -2,9 +2,9 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using WebTimeClock.Configuration;
+using WebTimeClock.WebUi.Configuration;
 
-namespace WebTimeClock.Common
+namespace WebTimeClock.WebUi.Common
 {
     public class TokenBuilderService(TokenSettings tokenSettings)
     {

@@ -1,6 +1,6 @@
-﻿using ApplicationData.Contract.Models.Enums;
+﻿using WebTimeClock.ApplicationData.Contract.Models.Enums;
 
-namespace ApplicationData.Contract.Models.DataModels
+namespace WebTimeClock.ApplicationData.Contract.Models.DataModels
 {
     public class TimeClockDataModel
     {

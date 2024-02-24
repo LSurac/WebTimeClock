@@ -1,6 +1,6 @@
-﻿using Application.Models.Dto;
+﻿using WebTimeClock.Application.Models.Dto;
 
-namespace Application.TimeClock.Queries.TimeClockLastGet
+namespace WebTimeClock.Application.TimeClock.Queries.TimeClockLastGet
 {
     public class TimeClockLastGetQueryResult
     {

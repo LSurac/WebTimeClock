@@ -1,11 +1,11 @@
-﻿using Application.Employee.Commands.EmployeeValidateLogin;
-using Application.Employee.Queries.EmployeeGet;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebTimeClock.Common;
-using WebTimeClock.Configuration;
+using WebTimeClock.Application.Employee.Commands.EmployeeValidateLogin;
+using WebTimeClock.Application.Employee.Queries.EmployeeGet;
+using WebTimeClock.WebUi.Common;
+using WebTimeClock.WebUi.Configuration;
 
-namespace WebTimeClock.Controllers
+namespace WebTimeClock.WebUi.Controllers
 {
     [ApiController]
     public class EmployeeController(TokenBuilderService tokenBuilderService,

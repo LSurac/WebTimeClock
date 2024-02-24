@@ -1,4 +1,4 @@
-﻿namespace SqlDataAccess.Contract.Configurations
+﻿namespace WebTimeClock.SqlDataAccess.Contract.Configurations
 {
     public class MsSqlDataSettings
     {

@@ -1,4 +1,4 @@
-﻿namespace ApplicationNotification.Configurations
+﻿namespace WebTimeClock.ApplicationNotification.Configurations
 {
     public class NotificationSettings
     {

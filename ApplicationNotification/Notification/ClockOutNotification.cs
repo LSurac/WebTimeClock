@@ -1,7 +1,7 @@
-﻿using ApplicationData.Contract.Models.DataModels;
-using MediatR;
+﻿using MediatR;
+using WebTimeClock.ApplicationData.Contract.Models.DataModels;
 
-namespace ApplicationNotification.Notification
+namespace WebTimeClock.ApplicationNotification.Notification
 {
     public class ClockOutNotification : INotification
     {

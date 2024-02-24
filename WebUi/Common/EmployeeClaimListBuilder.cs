@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
-using Application.Models.Dto;
+using WebTimeClock.Application.Models.Dto;
 
-namespace WebTimeClock.Common
+namespace WebTimeClock.WebUi.Common
 {
     public class EmployeeClaimListBuilder
     {

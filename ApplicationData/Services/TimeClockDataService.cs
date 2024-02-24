@@ -1,10 +1,10 @@
-﻿using ApplicationData.Contract.Models.DataModels;
-using ApplicationData.Contract.Models.Enums;
-using ApplicationData.Contract.Services;
-using SqlDataAccess.Contract.Entities;
-using SqlDataAccess.Contract.Services;
+﻿using WebTimeClock.ApplicationData.Contract.Models.DataModels;
+using WebTimeClock.ApplicationData.Contract.Models.Enums;
+using WebTimeClock.ApplicationData.Contract.Services;
+using WebTimeClock.SqlDataAccess.Contract.Entities;
+using WebTimeClock.SqlDataAccess.Contract.Services;
 
-namespace ApplicationData.Services
+namespace WebTimeClock.ApplicationData.Services
 {
     public class TimeClockDataService(ITimeClockDbService timeClockDbService) : ITimeClockDataService
     {

@@ -1,10 +1,10 @@
-﻿using Application.Employee.Queries.EmployeeGet;
-using Application.Models.Dto;
-using ApplicationData.Contract.Services;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
+using WebTimeClock.Application.Employee.Queries.EmployeeGet;
+using WebTimeClock.Application.Models.Dto;
+using WebTimeClock.ApplicationData.Contract.Services;
 
-namespace Application.Employee.Queries
+namespace WebTimeClock.Application.Employee.Queries
 {
     public class EmployeeGetQueryHandler(IEmployeeDataService employeeDataService,
         IMapper mapper) : IRequestHandler<EmployeeGetQuery, EmployeeGetQueryResult>

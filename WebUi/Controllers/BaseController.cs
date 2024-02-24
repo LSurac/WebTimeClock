@@ -1,8 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 
-namespace WebTimeClock.Controllers
+namespace WebTimeClock.WebUi.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

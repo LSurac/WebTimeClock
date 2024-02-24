@@ -1,11 +1,10 @@
-﻿using Application.Models.Dto;
-using ApplicationData.Contract.Models.DataModels;
-using ApplicationData.Contract.Models.Enums;
-using ApplicationData.Contract.Services;
-using ApplicationNotification.Notification;
-using MediatR;
+﻿using MediatR;
+using WebTimeClock.ApplicationData.Contract.Models.DataModels;
+using WebTimeClock.ApplicationData.Contract.Models.Enums;
+using WebTimeClock.ApplicationData.Contract.Services;
+using WebTimeClock.ApplicationNotification.Notification;
 
-namespace Application.TimeClock.Commands.TimeClockSet
+namespace WebTimeClock.Application.TimeClock.Commands.TimeClockSet
 {
     public class TimeClockSetCommandHandler(
         IEmployeeDataService employeeDataService,

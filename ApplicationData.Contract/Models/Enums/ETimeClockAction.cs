@@ -1,4 +1,4 @@
-﻿namespace ApplicationData.Contract.Models.Enums
+﻿namespace WebTimeClock.ApplicationData.Contract.Models.Enums
 {
     public enum ETimeClockAction
     {

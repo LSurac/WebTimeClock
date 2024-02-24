@@ -1,16 +1,13 @@
-using System.Reflection;
 using System.Text;
-using Application;
-using ApplicationData;
-using ApplicationNotification;
-using ApplicationNotification.Configurations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using NSwag;
-using SqlDataAccess;
-using WebTimeClock.Common;
-using WebTimeClock.Configuration;
+using WebTimeClock.Application;
+using WebTimeClock.ApplicationData;
+using WebTimeClock.ApplicationNotification;
+using WebTimeClock.SqlDataAccess;
+using WebTimeClock.WebUi.Common;
+using WebTimeClock.WebUi.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 IHostEnvironment env = builder.Environment;

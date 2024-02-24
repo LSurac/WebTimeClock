@@ -1,8 +1,8 @@
-﻿using Application.Models.Mapping;
-using ApplicationData.Contract.Models.DataModels;
-using AutoMapper;
+﻿using AutoMapper;
+using WebTimeClock.Application.Models.Mapping;
+using WebTimeClock.ApplicationData.Contract.Models.DataModels;
 
-namespace Application.Models.Dto
+namespace WebTimeClock.Application.Models.Dto
 {
     public class PasswordDto : IMapFrom<PasswordDataModel>
     {

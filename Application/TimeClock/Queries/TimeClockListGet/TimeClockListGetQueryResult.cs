@@ -1,6 +1,6 @@
-﻿using Application.Models.Dto;
+﻿using WebTimeClock.Application.Models.Dto;
 
-namespace Application.TimeClock.Queries.TimeClockListGet
+namespace WebTimeClock.Application.TimeClock.Queries.TimeClockListGet
 {
     public class TimeClockListGetQueryResult
     {

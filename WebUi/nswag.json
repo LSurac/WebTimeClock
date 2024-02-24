@@ -3,7 +3,7 @@
   "defaultVariables": null,
   "documentGenerator": {
     "aspNetCoreToOpenApi": {
-      "project": "WebTimeClock.csproj",
+      "project": "WebUi.csproj",
       "msBuildProjectExtensionsPath": null,
       "configuration": null,
       "runtime": null,
@@ -117,7 +117,7 @@
       "checksumCacheEnabled": false,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "WebUi/src/app/services/Web_Time_Clock_Client.ts",
+      "output": "ClientApp/src/app/services/Web_Time_Clock_Client.ts",
       "newLineBehavior": "Auto"
     }
   }

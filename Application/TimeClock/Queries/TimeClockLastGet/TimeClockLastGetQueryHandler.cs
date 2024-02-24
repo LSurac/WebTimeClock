@@ -1,10 +1,9 @@
-﻿using Application.Models.Dto;
-using Application.TimeClock.Queries.TimeClockListGet;
-using ApplicationData.Contract.Services;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
+using WebTimeClock.Application.Models.Dto;
+using WebTimeClock.ApplicationData.Contract.Services;
 
-namespace Application.TimeClock.Queries.TimeClockLastGet
+namespace WebTimeClock.Application.TimeClock.Queries.TimeClockLastGet
 {
     public class TimeClockLastGetQueryHandler(IEmployeeDataService employeeDataService, 
         ITimeClockDataService timeClockDataService,

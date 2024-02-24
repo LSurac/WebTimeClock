@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Application.Models.Mapping
+namespace WebTimeClock.Application.Models.Mapping
 {
     public interface IMapFrom<T>
     {

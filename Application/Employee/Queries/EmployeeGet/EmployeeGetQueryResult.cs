@@ -1,6 +1,6 @@
-﻿using Application.Models.Dto;
+﻿using WebTimeClock.Application.Models.Dto;
 
-namespace Application.Employee.Queries.EmployeeGet
+namespace WebTimeClock.Application.Employee.Queries.EmployeeGet
 {
     public class EmployeeGetQueryResult
     {
