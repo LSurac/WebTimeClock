@@ -1,12 +1,14 @@
 ﻿using Application.Models.Dto;
+using Application.TimeClock.Queries.TimeClockListGet;
 using ApplicationData.Contract.Services;
 using AutoMapper;
+using MediatR;
 
 namespace Application.TimeClock.Queries.TimeClockLastGet
 {
     public class TimeClockLastGetQueryHandler(IEmployeeDataService employeeDataService, 
         ITimeClockDataService timeClockDataService,
-        IMapper mapper)
+        IMapper mapper) : IRequestHandler<TimeClockLastGetQuery, TimeClockLastGetQueryResult>
     {
         public async Task<TimeClockLastGetQueryResult> Handle(
             TimeClockLastGetQuery request,

@@ -38,6 +38,10 @@ namespace ApplicationData.Services
 
         private static Task<TimeClockDataModel> MapTimeClockToDataModel(TimeClock timeClock)
         {
+            timeClock.EmployeeId ??= 0;
+            timeClock.UtcTime ??= DateTime.UtcNow;
+            timeClock.Action ??= ETimeClockAction.CheckOut.ToString();
+
             _ = Enum.TryParse<ETimeClockAction>(timeClock.Action, out var timeClockActionEnum);
 
             return Task.FromResult(

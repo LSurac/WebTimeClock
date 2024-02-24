@@ -1,0 +1,373 @@
+{
+  "x-generator": "NSwag v14.0.3.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "Web Time Clock API",
+    "description": "ASP.NET Web API for Web Time Clock.",
+    "contact": {
+      "name": "Leonard Surac",
+      "email": "leonardsurac@web.de"
+    },
+    "version": "v1"
+  },
+  "consumes": [
+    "application/json",
+    "text/json",
+    "application/*+json"
+  ],
+  "produces": [
+    "text/plain",
+    "application/json",
+    "text/json"
+  ],
+  "paths": {
+    "/api/Employee/EmployeeGet": {
+      "post": {
+        "tags": [
+          "Employee"
+        ],
+        "operationId": "Employee_EmployeeGet",
+        "parameters": [
+          {
+            "name": "employeeGetQuery",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmployeeGetQuery"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EmployeeGetQueryResult"
+            }
+          }
+        }
+      }
+    },
+    "/api/Employee/EmployeeLogin": {
+      "post": {
+        "tags": [
+          "Employee"
+        ],
+        "operationId": "Employee_EmployeeLogin",
+        "parameters": [
+          {
+            "name": "employeeLoginCommand",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmployeeValidateLoginCommand"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/TimeClock/TimeClockLastGet": {
+      "post": {
+        "tags": [
+          "TimeClock"
+        ],
+        "operationId": "TimeClock_TimeClockLastGet",
+        "parameters": [
+          {
+            "name": "timeClockLastGetQuery",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TimeClockLastGetQuery"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TimeClockLastGetQueryResult"
+            }
+          }
+        }
+      }
+    },
+    "/api/TimeClock/TimeClockListGet": {
+      "post": {
+        "tags": [
+          "TimeClock"
+        ],
+        "operationId": "TimeClock_TimeClockListGet",
+        "parameters": [
+          {
+            "name": "timeClockListGetQueryResult",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TimeClockListGetQuery"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TimeClockListGetQueryResult"
+            }
+          }
+        }
+      }
+    },
+    "/api/TimeClock/TimeClockSet": {
+      "post": {
+        "tags": [
+          "TimeClock"
+        ],
+        "operationId": "TimeClock_TimeClockSet",
+        "parameters": [
+          {
+            "name": "timeClockSetCommand",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TimeClockSetCommand"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TimeClockSetCommandResult"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "EmployeeGetQueryResult": {
+      "type": "object",
+      "required": [
+        "employee"
+      ],
+      "properties": {
+        "employee": {
+          "$ref": "#/definitions/EmployeeDto"
+        }
+      }
+    },
+    "EmployeeDto": {
+      "type": "object",
+      "required": [
+        "id",
+        "gender",
+        "dateOfBirth",
+        "addressId",
+        "hireDate",
+        "departmentId"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "forName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "#/definitions/EGender"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "format": "date"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "addressId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hireDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "departmentId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "EGender": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Female",
+        "Male",
+        "Divers"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ]
+    },
+    "EmployeeGetQuery": {
+      "type": "object",
+      "required": [
+        "employeeId"
+      ],
+      "properties": {
+        "employeeId": {
+          "type": "string"
+        }
+      }
+    },
+    "EmployeeValidateLoginCommand": {
+      "type": "object",
+      "required": [
+        "employeeId",
+        "password"
+      ],
+      "properties": {
+        "employeeId": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "TimeClockLastGetQueryResult": {
+      "type": "object",
+      "required": [
+        "timeClock"
+      ],
+      "properties": {
+        "timeClock": {
+          "$ref": "#/definitions/TimeClockDto"
+        }
+      }
+    },
+    "TimeClockDto": {
+      "type": "object",
+      "required": [
+        "id",
+        "employeeId",
+        "utcTime",
+        "action"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "employeeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "utcTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "action": {
+          "$ref": "#/definitions/ETimeClockAction"
+        }
+      }
+    },
+    "ETimeClockAction": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "CheckIn",
+        "CheckOut"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "TimeClockLastGetQuery": {
+      "type": "object",
+      "required": [
+        "employeeId"
+      ],
+      "properties": {
+        "employeeId": {
+          "type": "string"
+        }
+      }
+    },
+    "TimeClockListGetQueryResult": {
+      "type": "object",
+      "required": [
+        "timeClockList"
+      ],
+      "properties": {
+        "timeClockList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeClockDto"
+          }
+        }
+      }
+    },
+    "TimeClockListGetQuery": {
+      "type": "object",
+      "required": [
+        "employeeId"
+      ],
+      "properties": {
+        "employeeId": {
+          "type": "string"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "TimeClockSetCommandResult": {
+      "type": "object"
+    },
+    "TimeClockSetCommand": {
+      "type": "object",
+      "required": [
+        "timeClock"
+      ],
+      "properties": {
+        "timeClock": {
+          "$ref": "#/definitions/TimeClockDto"
+        }
+      }
+    }
+  }
+}

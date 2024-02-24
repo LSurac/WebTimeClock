@@ -10,7 +10,7 @@ namespace Application.TimeClock.Commands.TimeClockSet
     public class TimeClockSetCommandHandler(
         IEmployeeDataService employeeDataService,
         ITimeClockDataService timeClockDataService,
-        IMediator mediator)
+        IMediator mediator) : IRequestHandler<TimeClockSetCommand, TimeClockSetCommandResult>
     {
         public async Task<TimeClockSetCommandResult> Handle(
             TimeClockSetCommand request,
@@ -22,28 +22,18 @@ namespace Application.TimeClock.Commands.TimeClockSet
             var lastTimeClock =
                 await timeClockDataService.GetLastTimeClockDataAsync(request.TimeClock.EmployeeId.ToString());
 
-            TimeClockDataModel newTimeClock;
-
-            if (lastTimeClock == null)
+            var newTimeClock = new TimeClockDataModel
             {
-                newTimeClock = new TimeClockDataModel
-                {
-                    Action = ETimeClockAction.CheckIn,
-                    EmployeeId = request.TimeClock.EmployeeId,
-                    UtcTime = DateTime.UtcNow
-                };
-            }
-            else
-            {
-                newTimeClock = lastTimeClock;
+                EmployeeId = request.TimeClock.EmployeeId,
+                UtcTime = DateTime.UtcNow,
+            };
 
-                newTimeClock.Action = lastTimeClock.Action switch
-                {
-                    ETimeClockAction.CheckIn => ETimeClockAction.CheckOut,
-                    ETimeClockAction.CheckOut => ETimeClockAction.CheckIn,
-                    _ => newTimeClock.Action
-                };
-            }
+            newTimeClock.Action = lastTimeClock.Action switch
+            {
+                ETimeClockAction.CheckIn => ETimeClockAction.CheckOut,
+                ETimeClockAction.CheckOut => ETimeClockAction.CheckIn,
+                _ => lastTimeClock.Action
+            };
 
             await timeClockDataService.SetTimeClockAsync(newTimeClock);
 
@@ -53,7 +43,7 @@ namespace Application.TimeClock.Commands.TimeClockSet
                 Employee = employeeDataModel
             };
 
-            await mediator.Send(notification, cancellationToken);
+            await mediator.Publish(notification, cancellationToken);
 
             return new TimeClockSetCommandResult();
         }

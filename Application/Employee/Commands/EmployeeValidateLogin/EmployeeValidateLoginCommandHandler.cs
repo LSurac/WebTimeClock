@@ -2,12 +2,14 @@
 using ApplicationData.Contract.Models.DataModels;
 using ApplicationData.Contract.Services;
 using AutoMapper;
+using MediatR;
 
 namespace Application.Employee.Commands.EmployeeValidateLogin
 {
     public class EmployeeValidateLoginCommandHandler(IMapper mapper, 
         IEmployeeDataService employeeDataService, 
-        IPasswordDataService passwordDataService)
+        IPasswordDataService passwordDataService) 
+        : IRequestHandler<EmployeeValidateLoginCommand, EmployeeValidateLoginCommandResult>
     {
         public async Task<EmployeeValidateLoginCommandResult> Handle(
             EmployeeValidateLoginCommand request,

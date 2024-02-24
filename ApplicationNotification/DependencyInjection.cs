@@ -2,6 +2,7 @@
 using ApplicationNotification.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace ApplicationNotification
 {
@@ -11,15 +12,13 @@ namespace ApplicationNotification
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddOptions<SmtpSettings>()
-                .Bind(configuration
-                    .GetSection(SmtpSettings.SectionName)
-                );
+            services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+            });
 
-            services.AddOptions<NotificationSettings>()
-                .Bind(configuration
-                    .GetSection(NotificationSettings.SectionName)
-                );
+            services.AddSingleton(provider => provider.GetRequiredService<IConfiguration>().GetSection(NotificationSettings.SectionName).Get<NotificationSettings>());
+            services.AddSingleton(provider => provider.GetRequiredService<IConfiguration>().GetSection(SmtpSettings.SectionName).Get<SmtpSettings>());
 
             services.AddTransient<EmailService>();
 

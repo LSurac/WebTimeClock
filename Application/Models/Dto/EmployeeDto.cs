@@ -1,10 +1,11 @@
-﻿using ApplicationData.Contract.Models.DataModels;
+﻿using Application.Models.Mapping;
+using ApplicationData.Contract.Models.DataModels;
 using ApplicationData.Contract.Models.Enums;
 using AutoMapper;
 
 namespace Application.Models.Dto
 {
-    public class EmployeeDto : EmployeeDataModel
+    public class EmployeeDto : IMapFrom<EmployeeDataModel>
     {
         public int Id { get; set; }
         public string? ForName { get; set; }

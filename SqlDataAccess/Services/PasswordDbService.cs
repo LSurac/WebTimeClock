@@ -9,11 +9,11 @@ namespace SqlDataAccess.Services
     {
         public Task<List<Password>> GetPasswordListByEmployeeIdAsync(string employeeId)
         {
-            var dbCommand = $"SELECT * FROM password WHERE password_employeeId = @employeeId";
+            var dbCommand = $"SELECT * FROM password WHERE password_ObjId = @passwordObjId";
 
             var parameters = new[]
             {
-                new SqlParameter("@employeeId", SqlDbType.Int) { Value = 1 },
+                new SqlParameter("@passwordObjId", SqlDbType.Int) { Value = 1 },
             };
 
             return sqlDataAccessor.GetEntityListAsync<Password>(dbCommand, parameters);

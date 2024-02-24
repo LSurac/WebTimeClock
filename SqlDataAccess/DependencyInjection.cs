@@ -12,10 +12,7 @@ namespace SqlDataAccess
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddOptions<MsSqlDataSettings>()
-                .Bind(configuration
-                    .GetSection(MsSqlDataSettings.SectionName)
-                );
+            services.AddSingleton(provider => provider.GetRequiredService<IConfiguration>().GetSection(MsSqlDataSettings.SectionName).Get<MsSqlDataSettings>());
 
             services.AddTransient<SqlDataAccessor>();
 

@@ -1,11 +1,15 @@
+using System.Reflection;
 using System.Text;
 using Application;
 using ApplicationData;
 using ApplicationNotification;
+using ApplicationNotification.Configurations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using NSwag;
 using SqlDataAccess;
+using WebTimeClock.Common;
 using WebTimeClock.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,12 +25,15 @@ var tokenConfiguration = tokenConfigurationSection.Get<TokenSettings>();
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApiDocument();
-
+builder.Services.AddSingleton(provider => provider.GetRequiredService<IConfiguration>().GetSection(TokenSettings.SectionName).Get<TokenSettings>());
+builder.Services.AddTransient<EmployeeClaimListBuilder>();
+builder.Services.AddTransient<TokenBuilderService>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbServices(configuration);
 builder.Services.AddApplicationNotification(configuration);
 builder.Services.AddApplicationData();
 builder.Services.AddApplication();
+
 
 
 builder.Services.AddAuthentication(
@@ -77,22 +84,27 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.UseOpenApi();
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseOpenApi();
-    app.UseSwaggerUi();
+    app.UseSwaggerUi(settings =>
+    {
+        settings.Path = "/api";
+    }); ;
 }
 
-app.UseCors("CorsPolicy");
+app.UseRouting();
 
-app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.UseOpenApi();
-
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

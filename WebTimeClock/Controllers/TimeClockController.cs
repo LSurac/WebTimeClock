@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebTimeClock.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class TimeClockController : BaseController<TimeClockController>
     {

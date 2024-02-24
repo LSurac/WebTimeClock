@@ -2,10 +2,14 @@
 using ApplicationNotification.Configurations;
 using ApplicationNotification.Notification;
 using ApplicationNotification.Services;
+using MediatR;
 
 namespace ApplicationNotification.NotificationHandler
 {
-    public class ClockOutNotificationHandler(NotificationSettings notificationSettings, EmailService emailService)
+    public class ClockOutNotificationHandler(
+        NotificationSettings notificationSettings, 
+        EmailService emailService)
+        : INotificationHandler<ClockOutNotification>
     {
         public async Task Handle(
             ClockOutNotification notification,

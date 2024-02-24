@@ -32,8 +32,25 @@ namespace SqlDataAccess.Services
 
                     for (var i = 0; i < reader.FieldCount; i++)
                     {
-                        var property = dataModel.GetType().GetProperty(reader.GetName(i));
-                        property?.SetValue(dataModel, reader.GetValue(i));
+                        var columnName = reader.GetName(i);
+                        var property = typeof(T).GetProperties()
+                            .FirstOrDefault(p => Attribute.IsDefined(p, typeof(ColumnAttribute)) &&
+                                                 ((ColumnAttribute)Attribute.GetCustomAttribute(p, typeof(ColumnAttribute)))?.Name == columnName);
+
+                        if (property == null)
+                        {
+                            continue;
+                        }
+
+                        if (property.PropertyType == typeof(DateOnly))
+                        {
+                            var dateValue = Convert.ToDateTime(reader.GetValue(i));
+                            property.SetValue(dataModel, new DateOnly(dateValue.Year, dateValue.Month, dateValue.Day));
+                        }
+                        else
+                        {
+                            property.SetValue(dataModel, reader.GetValue(i));
+                        }
                     }
 
                     results.Add(dataModel);
@@ -47,6 +64,10 @@ namespace SqlDataAccess.Services
             catch (Exception ex)
             {
                 throw new Exception("Exception in GetEntityListAsync. Couldn't get Data from SQL-Server", ex);
+            }
+            finally
+            {
+                await _connection.CloseAsync();
             }
         }
 
@@ -68,10 +89,39 @@ namespace SqlDataAccess.Services
 
                 var dataModel = new T();
 
+                if (!reader.HasRows)
+                {
+                    return dataModel;
+                }
+
                 for (var i = 0; i < reader.FieldCount; i++)
                 {
-                    var property = dataModel.GetType().GetProperty(reader.GetName(i));
-                    property?.SetValue(dataModel, reader.GetValue(i));
+                    var columnName = reader.GetName(i);
+
+                    var property = typeof(T).GetProperties()
+                        .FirstOrDefault(p => Attribute.IsDefined(p, typeof(ColumnAttribute)) &&
+                                              ((ColumnAttribute)Attribute.GetCustomAttribute(p, typeof(ColumnAttribute)))?.Name == columnName);
+
+                    if (property == null || reader.IsDBNull(i))
+                    {
+                        continue;
+                    }
+
+                    var value = reader.GetValue(i);
+
+                    if (property.PropertyType == typeof(DateOnly) && value is DateTime dateTimeValue)
+                    {
+                        value = new DateOnly(dateTimeValue.Year, dateTimeValue.Month, dateTimeValue.Day);
+                    }
+
+                    if (property.PropertyType == typeof(DateOnly?) && value is DateTime nullableDateTimeValue)
+                    {
+                        value = nullableDateTimeValue == DateTime.MinValue
+                            ? (DateOnly?)null
+                            : new DateOnly(nullableDateTimeValue.Year, nullableDateTimeValue.Month, nullableDateTimeValue.Day);
+                    }
+
+                    property.SetValue(dataModel, value);
                 }
 
                 await reader.CloseAsync();
@@ -82,6 +132,10 @@ namespace SqlDataAccess.Services
             catch (Exception ex)
             {
                 throw new Exception("Exception in GetEntityAsync. Couldn't get Data from SQL-Server", ex);
+            }
+            finally
+            {
+                await _connection.CloseAsync();
             }
         }
 
@@ -115,6 +169,8 @@ namespace SqlDataAccess.Services
                 var reader = await command.ExecuteReaderAsync();
 
                 var hasData = await reader.ReadAsync();
+                await reader.CloseAsync();
+                await _connection.CloseAsync();
 
                 if (hasData)
                 {
@@ -124,12 +180,14 @@ namespace SqlDataAccess.Services
                 {
                     await InsertEntityAsync(entity, tableName);
                 }
-
-                await _connection.CloseAsync();
             }
             catch (Exception ex)
             {
                 throw new Exception("Exception in EntitySetAsync. Couldn't insert/update Data in SQL-Server", ex);
+            }
+            finally
+            {
+                await _connection.CloseAsync();
             }
         }
 
@@ -137,9 +195,10 @@ namespace SqlDataAccess.Services
         {
             try
             {
-                var properties = entity.GetType().GetProperties();
+                var properties = entity.GetType().GetProperties().Where(p => !Attribute.IsDefined(p, typeof(KeyAttribute)));
 
-                var columnNames = string.Join(", ", properties.Select(p => p.Name));
+                var columnNames = string.Join(", ", properties.Select(p => ((ColumnAttribute)Attribute.GetCustomAttribute(p, typeof(ColumnAttribute))).Name));
+
                 var paramNames = string.Join(", ", properties.Select(p => "@" + p.Name));
 
                 var insertCommand = $"INSERT INTO {tableName} ({columnNames}) VALUES ({paramNames})";
@@ -153,11 +212,14 @@ namespace SqlDataAccess.Services
 
                 await _connection.OpenAsync();
                 await command.ExecuteNonQueryAsync();
-                await _connection.CloseAsync();
             }
             catch (Exception ex)
             {
                 throw new Exception("Exception in InsertEntityAsync. Couldn't insert Data in SQL-Server", ex);
+            }
+            finally
+            {
+                await _connection.CloseAsync();
             }
         }
 
@@ -180,11 +242,14 @@ namespace SqlDataAccess.Services
 
                 await _connection.OpenAsync();
                 await command.ExecuteNonQueryAsync();
-                await _connection.CloseAsync();
             }
             catch (Exception ex)
             {
                 throw new Exception("Exception in UpdateEntityAsync. Couldn't update Data in SQL-Server", ex);
+            }
+            finally
+            {
+                await _connection.CloseAsync();
             }
         }
 
